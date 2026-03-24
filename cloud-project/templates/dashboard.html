@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Cloud Share</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>📂 Your Files</h2>
+    <p class="stats">Manage your uploaded media assets</p>
+
+    <div class="file-list">
+        {% for file in files %}
+            <div class="file-item">
+                <div class="file-info">
+                    <span class="file-name">{{ file.filename }}</span>
+                </div>
+
+                <div class="file-actions">
+                    <a href="{{ file.url }}" target="_blank" class="action-link view-link">View</a>
+                    
+                    {% set download_url = file.url | replace('/upload/', '/upload/fl_attachment/') %}
+                    <a href="{{ download_url }}" download="{{ file.filename }}" class="action-link download-link">Download</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="/" class="btn">Upload More</a>
+    <br>
+    <a href="/" class="nav-link">← Back to Home</a>
+</div>
+
+</body>
+</html>

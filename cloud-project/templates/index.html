@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Share - Secure File Upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>🚀 Upload to Cloud</h2>
+        <p class="stats">{{ file_count }} files stored • {{ storage }}MB used</p>
+        
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="file-input-wrapper">
+                <div class="file-label">
+                    <span>Click to select or drag and drop</span>
+                    <small>Maximum file size 10MB</small>
+                </div>
+                <input type="file" name="file" required>
+            </div>
+            <button type="submit">Upload File</button>
+        </form>
+
+        <a href="/dashboard" class="nav-link">View Dashboard →</a>
+    </div>
+</body>
+</html>
